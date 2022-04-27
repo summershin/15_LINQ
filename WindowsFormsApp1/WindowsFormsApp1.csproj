@@ -58,6 +58,11 @@
     <Compile Include="Frm作業_1.designer.cs">
       <DependentUpon>Frm作業_1.cs</DependentUpon>
     </Compile>
+    <Compile Include="nwDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>nwDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -75,6 +80,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="nwDataSet.xsc">
+      <DependentUpon>nwDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="nwDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>nwDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="nwDataSet.xss">
+      <DependentUpon>nwDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
