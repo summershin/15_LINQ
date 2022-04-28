@@ -217,7 +217,7 @@ namespace MyHomeWork
             this.label3.Location = new System.Drawing.Point(949, 261);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(258, 17);
+            this.label3.Size = new System.Drawing.Size(219, 14);
             this.label3.TabIndex = 135;
             this.label3.Text = "LINQ to Northwind DataSet - Products";
             // 
@@ -229,7 +229,7 @@ namespace MyHomeWork
             this.label9.Location = new System.Drawing.Point(937, 134);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(31, 17);
+            this.label9.Size = new System.Drawing.Size(27, 14);
             this.label9.TabIndex = 134;
             this.label9.Text = "年:";
             // 
@@ -241,7 +241,7 @@ namespace MyHomeWork
             this.label4.Location = new System.Drawing.Point(57, 22);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(145, 17);
+            this.label4.Size = new System.Drawing.Size(125, 14);
             this.label4.TabIndex = 103;
             this.label4.Text = "LINQ to FileInfo[]";
             // 
@@ -314,7 +314,7 @@ namespace MyHomeWork
             this.comboBox1.Location = new System.Drawing.Point(989, 130);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(176, 25);
+            this.comboBox1.Size = new System.Drawing.Size(176, 21);
             this.comboBox1.TabIndex = 125;
             // 
             // button12
@@ -348,7 +348,7 @@ namespace MyHomeWork
             this.textBox1.Location = new System.Drawing.Point(1056, 294);
             this.textBox1.Margin = new System.Windows.Forms.Padding(5);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(180, 27);
+            this.textBox1.Size = new System.Drawing.Size(180, 23);
             this.textBox1.TabIndex = 98;
             this.textBox1.Text = "10";
             // 
@@ -360,7 +360,7 @@ namespace MyHomeWork
             this.label1.Location = new System.Drawing.Point(937, 298);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(80, 17);
+            this.label1.Size = new System.Drawing.Size(67, 14);
             this.label1.TabIndex = 99;
             this.label1.Text = "一頁幾筆";
             // 
@@ -372,7 +372,7 @@ namespace MyHomeWork
             this.label5.Location = new System.Drawing.Point(524, 34);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(246, 17);
+            this.label5.Size = new System.Drawing.Size(207, 14);
             this.label5.TabIndex = 104;
             this.label5.Text = "LINQ to Northwind DataSet - Orders";
             // 
@@ -384,14 +384,14 @@ namespace MyHomeWork
             this.label2.Location = new System.Drawing.Point(574, 519);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(48, 17);
+            this.label2.Size = new System.Drawing.Size(41, 14);
             this.label2.TabIndex = 135;
             this.label2.Text = "Year:";
             // 
             // bindingSource1
             // 
             this.bindingSource1.CurrentChanged += new System.EventHandler(this.bindingSource1_CurrentChanged);
-
+            this.bindingSource1.PositionChanged += new System.EventHandler(this.bindingSource1_PositionChanged);
             // 
             // ordersTableAdapter1
             // 
@@ -408,7 +408,7 @@ namespace MyHomeWork
             // 
             // Frm作業_1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1531, 801);
             this.Controls.Add(this.splitContainer1);

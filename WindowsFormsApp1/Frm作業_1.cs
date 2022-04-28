@@ -62,16 +62,28 @@ namespace MyHomeWork
             dataGridView1.DataSource = nwDataSet1.Orders;
 
         }
-
+        int p = 0, x = 0;
         private void button1_Click(object sender, EventArgs e)
         {
             var q = from y in nwDataSet1.Orders
                     where y.OrderDate.Year == Convert.ToInt32(comboBox1.SelectedItem.ToString())
                     select y;
+            
+            bindingSource1.DataSource = q.ToList();
+            dataGridView1.DataSource = bindingSource1;
+            insertdatagridview2();
+        }
 
-            dataGridView1.DataSource = q.ToList();
-            bindingSource1.DataSource = nwDataSet1.Orders[0].GetChildRows("FK_Order_Details_Orders");
-            dataGridView2.DataSource = bindingSource1;
+        private void insertdatagridview2()
+        {
+            DataRow t = (DataRow)bindingSource1.Current;
+            int a = (int)t[0];
+            int i = 0;
+            while (a != (int)(nwDataSet1.Orders.Rows[i][0]))
+            {
+                i++;
+            }
+            dataGridView2.DataSource = nwDataSet1.Orders[i].GetChildRows("FK_Order_Details_Orders");
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -84,6 +96,12 @@ namespace MyHomeWork
                     select f;
             this.dataGridView1.DataSource = q.ToList();
 
+        }
+
+
+        private void bindingSource1_PositionChanged(object sender, EventArgs e)
+        {
+            insertdatagridview2();
         }
 
         private void button4_Click(object sender, EventArgs e)
