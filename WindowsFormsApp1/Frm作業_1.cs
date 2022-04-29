@@ -17,7 +17,10 @@ namespace MyHomeWork
             InitializeComponent();
             ordersTableAdapter1.Fill(nwDataSet1.Orders);
             order_DetailsTableAdapter1.Fill(nwDataSet1.Order_Details);
+            productsTableAdapter1.Fill(nwDataSet1.Products);
             FillCombox();
+            var q = nwDataSet1.Products;
+            a = q.Rows.Count % 10 == 0 ? q.Rows.Count / 10 : q.Rows.Count / 10 + 1;
         }
 
         private void FillCombox()
@@ -37,8 +40,26 @@ namespace MyHomeWork
 
         }
 
+        int page = 0;
+        bool flag = true;
+        int a = 0;
+
         private void button13_Click(object sender, EventArgs e)
         {
+            
+            var q = nwDataSet1.Products;
+            a = q.Rows.Count%10==0? q.Rows.Count/10:q.Rows.Count/10+1;
+            if (page == a)
+            {
+                page = 0;
+            }
+            var p =  q.Skip(page * Convert.ToInt32(textBox1.Text));
+            page = flag ? page + 1 : page + 2;
+            
+            dataGridView1.DataSource = p.Take(Convert.ToInt32(textBox1.Text)).ToList();
+            
+
+                    
             //this.nwDataSet1.Products.Take(10);//Top 10 Skip(10)
 
             //Distinct()
@@ -102,6 +123,20 @@ namespace MyHomeWork
         private void bindingSource1_PositionChanged(object sender, EventArgs e)
         {
             insertdatagridview2();
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            if (page == 0)
+            {
+                page = a;
+            }
+            page = !flag ? page  - 2 : page - 1;
+            var q = nwDataSet1.Products;
+            var p = q.Skip(page * Convert.ToInt32(textBox1.Text));
+
+
+            dataGridView1.DataSource = p.Take(Convert.ToInt32(textBox1.Text)).ToList();
         }
 
         private void button4_Click(object sender, EventArgs e)

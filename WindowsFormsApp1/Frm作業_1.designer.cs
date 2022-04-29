@@ -57,6 +57,7 @@ namespace MyHomeWork
             this.ordersTableAdapter1 = new WindowsFormsApp1.nwDataSetTableAdapters.OrdersTableAdapter();
             this.order_DetailsTableAdapter1 = new WindowsFormsApp1.nwDataSetTableAdapters.Order_DetailsTableAdapter();
             this.nwDataSet1 = new WindowsFormsApp1.nwDataSet();
+            this.productsTableAdapter1 = new WindowsFormsApp1.nwDataSetTableAdapters.ProductsTableAdapter();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
@@ -328,6 +329,7 @@ namespace MyHomeWork
             this.button12.TabIndex = 97;
             this.button12.Text = "上一頁";
             this.button12.UseVisualStyleBackColor = false;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
             // button4
             // 
@@ -406,6 +408,10 @@ namespace MyHomeWork
             this.nwDataSet1.DataSetName = "nwDataSet";
             this.nwDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // productsTableAdapter1
+            // 
+            this.productsTableAdapter1.ClearBeforeFill = true;
+            // 
             // Frm作業_1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -466,5 +472,6 @@ namespace MyHomeWork
         private WindowsFormsApp1.nwDataSetTableAdapters.OrdersTableAdapter ordersTableAdapter1;
         private WindowsFormsApp1.nwDataSetTableAdapters.Order_DetailsTableAdapter order_DetailsTableAdapter1;
         private WindowsFormsApp1.nwDataSet nwDataSet1;
+        private WindowsFormsApp1.nwDataSetTableAdapters.ProductsTableAdapter productsTableAdapter1;
     }
 }
