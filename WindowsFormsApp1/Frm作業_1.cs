@@ -20,7 +20,7 @@ namespace MyHomeWork
             productsTableAdapter1.Fill(nwDataSet1.Products);
             FillCombox();
             var q = nwDataSet1.Products;
-            a = q.Rows.Count % 10 == 0 ? q.Rows.Count / 10 : q.Rows.Count / 10 + 1;
+            MaxPages = q.Rows.Count % b == 0 ? q.Rows.Count / b : q.Rows.Count / b + 1;
         }
 
         private void FillCombox()
@@ -40,21 +40,20 @@ namespace MyHomeWork
 
         }
 
-        int page = 0;
-        bool flag = true;
-        int a = 0;
+        int page = -1;
+        int MaxPages = 0;
+        int b = 10;
 
         private void button13_Click(object sender, EventArgs e)
         {
-            
+            lblMaster.Text = "產品";
             var q = nwDataSet1.Products;
-            a = q.Rows.Count%10==0? q.Rows.Count/10:q.Rows.Count/10+1;
-            if (page == a)
+            if (page == MaxPages-1)
             {
-                page = 0;
+                page = -1;
             }
+            page++;
             var p =  q.Skip(page * Convert.ToInt32(textBox1.Text));
-            page = flag ? page + 1 : page + 2;
             
             dataGridView1.DataSource = p.Take(Convert.ToInt32(textBox1.Text)).ToList();
             
@@ -129,14 +128,32 @@ namespace MyHomeWork
         {
             if (page == 0)
             {
-                page = a;
+                page = MaxPages;
             }
-            page = !flag ? page  - 2 : page - 1;
+            page--;
             var q = nwDataSet1.Products;
             var p = q.Skip(page * Convert.ToInt32(textBox1.Text));
 
 
-            dataGridView1.DataSource = p.Take(Convert.ToInt32(textBox1.Text)).ToList();
+            dataGridView1.DataSource = p.Take(Convert.ToInt32(b)).ToList();
+        }
+
+        
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            b = 0;
+            bool m = int.TryParse(textBox1.Text, out b);
+            if (!m)
+            {
+                MessageBox.Show("請輸入數字!");
+            }
+            else
+            {
+                var q = nwDataSet1.Products;
+                MaxPages = q.Rows.Count % b == 0 ? q.Rows.Count / b : q.Rows.Count / b + 1;
+            }
+            page = -1;
         }
 
         private void button4_Click(object sender, EventArgs e)
