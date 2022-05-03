@@ -25,6 +25,7 @@ namespace MyHomeWork
             var q1 = from p in awDataSet1.ProductPhoto
                      orderby p.ModifiedDate
                      select p.ModifiedDate.Year;
+            var q2 = awDataSet1.ProductPhoto.OrderBy(p=>p.ModifiedDate).Select(p=>p.ModifiedDate.Year).Distinct();
 
            foreach(int i in q1.Distinct())
             {
