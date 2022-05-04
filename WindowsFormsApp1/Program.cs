@@ -1,4 +1,5 @@
-﻿using MyHomeWork;
+﻿using LinqLabs;
+using MyHomeWork;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,8 @@ namespace WindowsFormsApp1
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new Frm作業_1());
             //Application.Run(new Frm作業_2());
-            Application.Run(new Frm作業_3());
+            //Application.Run(new Frm作業_3());
+            Application.Run(new Frm考試());
         }
     }
 }

@@ -143,7 +143,6 @@ namespace MyHomeWork
                 dataGridView2.DataSource = ord.ToList();
             }
 
-            
         }
 
 
@@ -264,6 +263,24 @@ namespace MyHomeWork
                     .OrderByDescending(o=>o.total).Take(5);
 
             dataGridView1.DataSource = q.ToList();
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            var q = dbcontext.Products.OrderByDescending(n => n.UnitPrice).Select(n=>new { n.ProductName,n.Category.CategoryName,n.UnitPrice.Value }).Take(5);
+
+            dataGridView1.DataSource = q.ToList();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            var q = dbcontext.Products;
+            bool a = q.Where(n => n.UnitPrice > 300).Any();
+            string s = a ? "有單價300元以上的產品" : "沒有單價300元以上的產品";
+            MessageBox.Show(s);
+            dataGridView1.DataSource = q.OrderByDescending(n => n.UnitPrice).Select(n => new { n.ProductName, n.UnitPrice }).ToList();
+
+
         }
     }
 }

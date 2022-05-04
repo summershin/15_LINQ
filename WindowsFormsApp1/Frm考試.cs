@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1;
 
 namespace LinqLabs
 {
@@ -28,6 +29,7 @@ namespace LinqLabs
                                           };
         }
 
+        NorthwindEntities nwdata = new NorthwindEntities();
         List<Student> students_scores;
 
         public class Student
@@ -43,7 +45,7 @@ namespace LinqLabs
         private void button36_Click(object sender, EventArgs e)
         {
             #region 搜尋 班級學生成績
-           
+
             // 
             // 共幾個 學員成績 ?						
 
@@ -59,6 +61,44 @@ namespace LinqLabs
             // 找出 'aaa', 'bbb' 'ccc' 學員 國文數學兩科 科目成績  |				
             // 數學不及格 ... 是誰 
             #endregion
+
+            label3.Text = "共"+ students_scores.Count()+" 位學員\n";
+            var q = students_scores.Take(3);
+            dataGridView1.DataSource = q.ToList();
+            label3.Text = "前面三個 的學員所有科目成績	";
+
+            MessageBox.Show("下一個");
+
+            q = students_scores.Skip(4).Take(2);
+            dataGridView1.DataSource = q.ToList();
+            label3.Text = "後面兩個 的學員所有科目成績	";
+
+            MessageBox.Show("下一個");
+
+            var q1 = students_scores.Where(n => n.Name == "aaa" || n.Name == "bbb" || n.Name == "ccc").Select(n => new { n.Name, n.Chi, n.Eng });
+            dataGridView1.DataSource = q1.ToList();
+            label3.Text = " 'aaa','bbb','ccc' 的學員國文英文科目成績	";
+
+            MessageBox.Show("下一個");
+
+            q = students_scores.Where(n => n.Name == "bbb");
+            dataGridView1.DataSource = q.ToList();
+            label3.Text = "學員 bbb 的所有科目成績";
+
+            MessageBox.Show("下一個");
+            q = students_scores.Where(n => n.Name != "bbb");
+            dataGridView1.DataSource = q.ToList();
+            label3.Text = "除了學員 bbb 以外的所有科目成績";
+
+            MessageBox.Show("下一個");
+            var q2 = students_scores.Where(n => n.Name == "aaa" || n.Name == "bbb" || n.Name == "ccc").Select(n => new { n.Name, n.Chi, n.Math });
+            dataGridView1.DataSource = q2.ToList();
+            label3.Text = "'aaa', 'bbb' 'ccc' 學員 國文數學兩科 科目成績 ";
+
+            MessageBox.Show("下一個");
+            var q3 = students_scores.Where(n => n.Math<60).Select(n=> new{ n.Name});
+            dataGridView1.DataSource = q3.ToList();
+            label3.Text = "數學不及格的學生";
 
         }
   
@@ -101,8 +141,63 @@ namespace LinqLabs
 
             // 每年 總銷售分析 圖
             // 每月 總銷售分析 圖
+
+            var q = from o in nwdata.Order_Details.AsEnumerable()
+                    group o by o.Order.OrderDate.Value.Year into g
+                    select new
+                    {
+                        year = g.Key,
+                        Totalprice = g.Sum(n=>(int)(n.UnitPrice*n.Quantity)*(1-n.Discount))
+                    };
+
+            chart1.DataSource = q.ToList();
+            chart1.Series[0].Name = "每年總銷售金額";
+            chart1.Series[0].XValueMember = "year";
+            chart1.Series[0].YValueMembers = "TotalPrice";
+            chart1.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+
+            label1.Text = $"{q.OrderBy(n=>n.Totalprice).Select(n=>n.year).Last()}年總銷售最好\n" +
+                "最高銷售金額: " + $"{q.OrderBy(n => n.Totalprice).Select(n => n.Totalprice).Last():c2}" + "元\n" +
+                $"{q.OrderBy(n => n.Totalprice).Select(n => n.year).First()}年總銷售最不好\n" +
+                "最低銷售金額: " + $"{q.OrderBy(n => n.Totalprice).Select(n => n.Totalprice).First():c2}元\n";
+                
+
+            var q1 = from o in nwdata.Order_Details.AsEnumerable()
+                    group o by o.Order.OrderDate.Value.Month into g
+                    select new
+                    {
+                        month = g.Key,
+                        Totalprice = g.Sum(n => (int)(n.UnitPrice * n.Quantity) * (1 - n.Discount))
+                    };
+
+            label2.Text = $"{q1.OrderBy(n => n.Totalprice).Select(n => n.month).Last()}月總銷售最好\n" +
+               "年度最高銷售金額: " + $"{q1.OrderBy(n => n.Totalprice).Select(n => n.Totalprice).Last():c2}" + "元\n" +
+               $"{q1.OrderBy(n => n.Totalprice).Select(n => n.month).First()}月總銷售最不好\n" +
+               "年度最低銷售金額: " + $"{q1.OrderBy(n => n.Totalprice).Select(n => n.Totalprice).First():c2}元\n";
+
+            chart2.DataSource = q1.ToList();
+            chart2.Series[0].Name = "每月總銷售金額";
+            chart2.Series[0].XValueMember = "month";
+            chart2.Series[0].YValueMembers = "TotalPrice";
+            chart2.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+
+
         }
 
-      
+        private void button6_Click(object sender, EventArgs e)
+        {
+
+            var q = from o in nwdata.Order_Details.AsEnumerable()
+                    group o by o.Order.OrderDate.Value.Year into g
+                    select new
+                    {
+                        year = g.Key,
+                        Totalprice = g.Sum(n => (int)(n.UnitPrice * n.Quantity) * (1 - n.Discount))
+                    };
+            
+
+        }
+
+        
     }
 }

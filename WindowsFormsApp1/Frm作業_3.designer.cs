@@ -239,7 +239,7 @@ namespace MyHomeWork
             this.label3.Location = new System.Drawing.Point(11, 296);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(163, 15);
+            this.label3.Size = new System.Drawing.Size(194, 18);
             this.label3.TabIndex = 134;
             this.label3.Text = "LINQ to Northwind Entity";
             // 
@@ -261,7 +261,7 @@ namespace MyHomeWork
             this.label4.Location = new System.Drawing.Point(4, 22);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(106, 15);
+            this.label4.Size = new System.Drawing.Size(128, 18);
             this.label4.TabIndex = 126;
             this.label4.Text = "LINQ - GroupBy";
             // 
@@ -288,6 +288,7 @@ namespace MyHomeWork
             this.button9.TabIndex = 91;
             this.button9.Text = "     NW 產品最高單價前 5 筆 (包括類別名稱)";
             this.button9.UseVisualStyleBackColor = false;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // button2
             // 
@@ -311,6 +312,7 @@ namespace MyHomeWork
             this.button7.TabIndex = 92;
             this.button7.Text = "     NW 產品有任何一筆單價大於300 ?";
             this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // label1
             // 
@@ -318,7 +320,7 @@ namespace MyHomeWork
             this.label1.Location = new System.Drawing.Point(10, 123);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(115, 15);
+            this.label1.Size = new System.Drawing.Size(136, 18);
             this.label1.TabIndex = 128;
             this.label1.Text = "LINQ to FileInfo[]";
             // 
@@ -387,7 +389,7 @@ namespace MyHomeWork
             // 
             // Frm作業_3
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1610, 794);
             this.Controls.Add(this.tableLayoutPanel3);
