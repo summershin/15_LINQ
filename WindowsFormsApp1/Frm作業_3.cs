@@ -280,7 +280,6 @@ namespace MyHomeWork
             MessageBox.Show(s);
             dataGridView1.DataSource = q.OrderByDescending(n => n.UnitPrice).Select(n => new { n.ProductName, n.UnitPrice }).ToList();
 
-
         }
     }
 }
